@@ -1,0 +1,5 @@
+# Local working files, not part of the published site
+.claude/
+.impeccable/
+PRODUCT.md
+DESIGN.md

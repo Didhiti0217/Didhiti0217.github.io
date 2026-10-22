@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+THESIS: An academic-style homepage (identity column, plain first-person intro, ruled project table, dated news log) that refuses the template's white minimalism and the usual card grid.
+OWN-WORLD: "The Roastery Ledger". Full-bleed bands in the user's five roasts (espresso, crema, latte, mocha), 1px roast hairlines, Young Serif name and headlines, Hanken Grotesk text.
+STORY: The visitor learns who Didhiti is and what she builds, sees five projects with code and write-ups, reads three recent wins, and emails her.
+FIRST VIEWPORT: Espresso cover. Photo and the large name on the left, the intro and her aim on the right, email and GitHub links under the name.
+FORM: Pinned by the user (farhanishraq17.github.io structure and voice, with the supplied palette), so no concept roll was run.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Didhiti Nahid</title>
+  <meta name="description" content="Didhiti Nahid, Computer Science and Engineering undergraduate at Islamic University of Technology. Full-stack applications, backend systems and AI-powered solutions.">
+  <meta name="theme-color" content="#38220f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hanken+Grotesk:wght@400..700&family=Young+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=13">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header band band--espresso">
+    <nav class="container nav" aria-label="Main">
+      <a href="#top" class="nav-home">Didhiti Nahid</a>
+      <ul class="nav-links">
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="extracurricular.html">Extracurricular</a></li>
+        <li><a href="#highlights">Highlights</a></li>
+        <li class="nav-cv"><button type="button" class="nav-cv-btn" aria-describedby="cv-note">CV</button><span id="cv-note" class="nav-cv-note" role="tooltip">Will be added later</span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- Intro -->
+    <section id="top" class="hero band band--white" aria-label="Introduction">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <div class="intro">
+            <p>
+              Hi, I'm Didhiti, an undergraduate Computer Science and Engineering student at
+              <a href="https://www.iutoic-dhaka.edu/" target="_blank" rel="noopener">Islamic University of Technology</a>.
+              I build full-stack applications, backend systems and AI-powered solutions, and I enjoy building them with a team.
+            </p>
+            <p>
+              I am passionate about leveraging artificial intelligence and machine learning to build innovative,
+              data-driven applications that deliver measurable real-world impact.
+            </p>
+          </div>
+
+          <ul class="social-links">
+            <li>
+              <a href="mailto:didhiti.nahid@gmail.com" aria-label="Email" title="Email">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <path d="m3.5 6.5 8.5 6.5 8.5-6.5"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Didhiti0217" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                <svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true" fill="currentColor">
+                  <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="identity">
+          <div class="portrait">
+            <!-- Replace with your photo: put it in assets/, change src (e.g. assets/photo.jpg) and update alt to "Photo of Didhiti Nahid" -->
+            <img class="photo" src="assets/photo-placeholder.svg" alt="Placeholder for Didhiti Nahid's photo" width="400" height="500">
+          </div>
+          <h1 class="name">Didhiti Nahid</h1>
+          <p class="role">
+            <span>Undergraduate student</span>
+            <span>Islamic University of Technology</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent highlights: shows three at a time, scroll for the rest -->
+    <section id="highlights" class="section band band--crema" aria-labelledby="highlights-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="highlights-title">Recent Highlights</h2>
+        </div>
+        <div class="news-scroll" tabindex="0" role="region" aria-labelledby="highlights-title">
+          <ol class="news">
+            <li>
+              <time datetime="2026-09">Sep 2026</time>
+              <p>Won 1st place (Champion) at the Nascenia AI Hackathon 2026 among 100+ teams.</p>
+            </li>
+            <li>
+              <time datetime="2026-09">Sep 2026</time>
+              <p>1st Runner-Up at the <a href="https://github.com/farhanishraq17/IUT_BakeNekos-HerWillxUAP-Datathon-1st-Runners-up-Solution" target="_blank" rel="noopener">HerWILL × UAP Safe Social Media Datathon 2026</a>.</p>
+            </li>
+            <li>
+              <time datetime="2026-09">Sep 2026</time>
+              <p>Bronze Medal in Kaggle's <a href="https://www.kaggle.com/competitions/kaggriculture" target="_blank" rel="noopener">Kaggriculture</a>, 847th of 10,148 teams.</p>
+            </li>
+            <li>
+              <time datetime="2026-09">Sep 2026</time>
+              <p>Honourable Mention at the Blockchain and AI Olympiad Bangladesh 2026 for <a href="https://github.com/farhanishraq17/Obhoy" target="_blank" rel="noopener">Obhoy</a>; selected as a finalist for IBCOL 2026 in Hong Kong.</p>
+            </li>
+            <li>
+              <time datetime="2024">2024</time>
+              <p>Joined the <a href="extracurricular.html#volunteer">IUT Computer Society</a> Executive Body 2024–25 as Assistant Director (Human Resource).</p>
+            </li>
+            <li>
+              <time datetime="2023-08">Aug 2023</time>
+              <p>Started my B.Sc. in Computer Science at IUT.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer band band--espresso">
+    <div class="container">
+      <p>© 2026 Didhiti Nahid</p>
+    </div>
+  </footer>
+
+  <script>
+    // Size the highlights box to exactly three items; the rest scroll.
+    (function () {
+      var box = document.querySelector('.news-scroll');
+      if (!box) return;
+      var list = box.querySelector('.news');
+      var items = list.children;
+
+      function update() {
+        box.classList.toggle('has-more', box.scrollTop + box.clientHeight < box.scrollHeight - 2);
+      }
+
+      function fit() {
+        if (items.length <= 3) { box.style.maxHeight = 'none'; return; }
+        var third = items[2];
+        box.style.maxHeight = (third.offsetTop + third.offsetHeight + 2) + 'px';
+        update();
+      }
+
+      box.addEventListener('scroll', update, { passive: true });
+      if ('ResizeObserver' in window) new ResizeObserver(fit).observe(list);
+      window.addEventListener('load', fit);
+      fit();
+    })();
+  </script>
+
+</body>
+</html>

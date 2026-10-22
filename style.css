@@ -1,0 +1,724 @@
+/* ==========================================================
+   The Roastery Ledger: tokens (see DESIGN.md)
+   ========================================================== */
+:root {
+  --espresso: #38220f;
+  --mocha: #634832;
+  --roast: #967259;
+  --latte: #dbc1ac;
+  --crema: #ece0d1;
+  --white: #ffffff;
+
+  --font-signature: "Great Vibes", "Segoe Script", cursive;
+  --font-display: "Young Serif", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+
+  --max-width: 1080px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --section: clamp(3.5rem, 8vw, 6rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--espresso);
+  background: var(--crema);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ol, ul {
+  margin: 0;
+}
+
+ol, ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 200ms var(--ease-out), text-decoration-color 200ms var(--ease-out);
+}
+
+html {
+  scrollbar-color: var(--roast) var(--crema);
+}
+
+::selection {
+  background: var(--mocha);
+  color: var(--crema);
+}
+
+.band--espresso ::selection {
+  background: var(--latte);
+  color: var(--espresso);
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 20;
+  padding: 0.5rem 0.9rem;
+  background: var(--crema);
+  color: var(--espresso);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Bands: one roast per section ---------- */
+.band--espresso { background: var(--espresso); color: var(--crema); }
+.band--mocha    { background: var(--mocha);    color: var(--crema); }
+.band--latte    { background: var(--latte);    color: var(--espresso); }
+.band--crema    { background: var(--crema);    color: var(--espresso); }
+.band--white    { background: var(--white);    color: var(--espresso); }
+
+.section {
+  padding: var(--section) 0;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgb(236 224 209 / 0.14);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  min-height: 3.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.nav-home {
+  font-family: var(--font-signature);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--crema);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: var(--latte);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] {
+  color: var(--crema);
+  text-decoration-color: currentColor;
+}
+
+/* CV: not attached yet, so the nav item shows a note instead of downloading */
+.nav-cv {
+  position: relative;
+}
+
+.nav-cv-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--latte);
+  cursor: help;
+  text-decoration: underline dotted;
+  text-decoration-color: rgb(219 193 172 / 0.6);
+  text-underline-offset: 0.2em;
+}
+
+.nav-cv-btn:hover,
+.nav-cv-btn:focus-visible {
+  color: var(--crema);
+}
+
+.nav-cv-note {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  z-index: 20;
+  padding: 0.4rem 0.75rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--espresso);
+  background: var(--crema);
+  border: 1px solid var(--roast);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out), visibility 200ms;
+  pointer-events: none;
+}
+
+.nav-cv-btn:hover + .nav-cv-note,
+.nav-cv-btn:focus + .nav-cv-note {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: clamp(2rem, 4.5vw, 3.5rem) 0 clamp(2.25rem, 5vw, 3.75rem);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+/* Right column: oval portrait, then the name and designation centred under it */
+.identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Oval portrait with a separate oval ring around it */
+.portrait {
+  position: relative;
+  width: clamp(11.5rem, 19vw, 15rem);
+  aspect-ratio: 4 / 5;
+  margin: 18px 18px calc(18px + 1.25rem);
+}
+
+.portrait::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border: 1.5px solid var(--roast);
+  border-radius: 50%;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.name {
+  position: relative;
+  padding-bottom: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* The one authored moment: a roast rule draws out from the centre under the name on load. */
+.name::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 2rem);
+  bottom: 0;
+  width: 4rem;
+  height: 3px;
+  background: var(--roast);
+  transform-origin: center;
+  animation: draw-rule 1100ms var(--ease-out) 250ms both;
+}
+
+@keyframes draw-rule {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.role {
+  margin-top: 0.75rem;
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--mocha);
+}
+
+.role span {
+  display: block;
+}
+
+.intro {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 62ch;
+  font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+  line-height: 1.7;
+}
+
+.intro p + p {
+  color: var(--mocha);
+}
+
+.intro a {
+  color: var(--espresso);
+  text-decoration-color: var(--roast);
+}
+
+.intro a:hover {
+  color: var(--mocha);
+  text-decoration-color: currentColor;
+}
+
+/* Contact icons: round buttons that echo the portrait ring */
+.social-links {
+  display: flex;
+  gap: 0.875rem;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  display: grid;
+  place-items: center;
+  width: 2.875rem;
+  height: 2.875rem;
+  border: 1.5px solid var(--roast);
+  border-radius: 50%;
+  color: var(--espresso);
+  transition: background-color 250ms var(--ease-out), color 250ms var(--ease-out), border-color 250ms var(--ease-out);
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  color: var(--white);
+}
+
+.social-links a:focus-visible {
+  outline-color: var(--espresso);
+  border-radius: 50%;
+}
+
+/* ---------- Section heads ---------- */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+  line-height: 1.15;
+}
+
+.ledger-head {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mocha);
+}
+
+/* ---------- Ledger (projects, education) ---------- */
+.ledger-row {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr) 6.5rem;
+  gap: 0.5rem 2.5rem;
+  padding: 1.6rem 1rem;
+  margin: 0 -1rem;
+  border-top: 1px solid var(--roast);
+  transition: background-color 300ms var(--ease-out);
+}
+
+.ledger-row:last-child {
+  border-bottom: 1px solid var(--roast);
+}
+
+.ledger-head {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-top: 0;
+}
+
+.ledger-row:not(.ledger-head):hover {
+  background: var(--latte);
+}
+
+.focus {
+  padding-top: 0.15rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--mocha);
+}
+
+.project h2,
+.project h3 {
+  font-size: 1.125rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.project p {
+  max-width: 68ch;
+  margin-top: 0.4rem;
+}
+
+.project .stack {
+  margin-top: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--mocha);
+}
+
+.links {
+  display: grid;
+  align-content: start;
+  gap: 0.2rem;
+  padding-top: 0.1rem;
+  font-weight: 600;
+}
+
+.links a,
+.news a {
+  color: var(--mocha);
+  text-decoration-color: var(--roast);
+}
+
+.links a:hover,
+.news a:hover {
+  color: var(--espresso);
+  text-decoration-color: currentColor;
+}
+
+/* ---------- Experience page: one white sheet ---------- */
+.exp-page {
+  padding-bottom: var(--section);
+}
+
+.page-head {
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 0;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.page-lede {
+  margin-top: 0.75rem;
+  font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+  color: var(--mocha);
+}
+
+.exp-section {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.exp-title {
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+  line-height: 1.15;
+}
+
+/* Logo column, then the entry text */
+.entry {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--roast);
+}
+
+.entry:last-child {
+  border-bottom: 1px solid var(--roast);
+}
+
+.entry-logo {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+}
+
+/* On the white sub-pages the project table lines up with the page title, like the entries */
+.exp-page .ledger-row {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.exp-page .ledger-row:not(.ledger-head):hover {
+  background: none;
+}
+
+/* Entries without logos (honors) use the full width */
+.entries--text .entry {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.entry-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.entry-links a {
+  color: var(--mocha);
+  text-decoration-color: var(--roast);
+}
+
+.entry-links a:hover {
+  color: var(--espresso);
+  text-decoration-color: currentColor;
+}
+
+.entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 2rem;
+}
+
+.entry-head h3 {
+  font-size: 1.125rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.entry-date {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--mocha);
+  white-space: nowrap;
+}
+
+.entry-role {
+  margin-top: 0.35rem;
+  color: var(--mocha);
+}
+
+.entry-points {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 68ch;
+  margin-top: 0.75rem;
+}
+
+.entry-points li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.entry-points li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.7em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--roast);
+}
+
+/* ---------- Recent highlights ---------- */
+/* A scroll box sized by script to show three items; the rest scroll. */
+.news-scroll {
+  position: relative;
+  max-height: 17rem;
+  margin: 0 -1rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-snap-type: y proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--roast) transparent;
+  border-top: 1px solid rgb(99 72 50 / 0.4);
+  border-bottom: 1px solid rgb(99 72 50 / 0.4);
+}
+
+/* Fade the bottom edge while more items are below */
+.news-scroll.has-more {
+  -webkit-mask-image: linear-gradient(to bottom, var(--espresso) calc(100% - 1.5rem), transparent);
+  mask-image: linear-gradient(to bottom, var(--espresso) calc(100% - 1.5rem), transparent);
+}
+
+.news-scroll:focus-visible {
+  outline: 2px solid var(--espresso);
+  outline-offset: 2px;
+}
+
+.news li {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 0.25rem 2.5rem;
+  padding: 1.15rem 1rem;
+  scroll-snap-align: start;
+}
+
+.news li + li {
+  border-top: 1px solid rgb(99 72 50 / 0.4);
+}
+
+.news time {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--mocha);
+}
+
+.news p {
+  max-width: 68ch;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 1.5rem 0;
+  font-size: 0.875rem;
+  color: var(--latte);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 7.5rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* On phones the photo, name and designation sit above the text */
+  .identity {
+    order: -1;
+  }
+
+  .portrait {
+    width: 10rem;
+    margin: 14px 14px calc(14px + 1.25rem);
+  }
+
+  .social-links {
+    margin-top: 1.5rem;
+  }
+
+  .portrait::before {
+    inset: -14px;
+  }
+
+  .nav-home {
+    font-size: 1.75rem;
+  }
+
+  /* CV wraps to the start of the second nav row on phones */
+  .nav-cv-note {
+    right: auto;
+    left: 0;
+  }
+
+  .ledger-head {
+    display: none;
+  }
+
+  .ledger-row {
+    grid-template-columns: 1fr;
+    padding: 1.35rem 1rem;
+  }
+
+  .focus {
+    font-size: 0.875rem;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    margin-top: 0.4rem;
+  }
+
+  .news li {
+    grid-template-columns: 1fr;
+  }
+
+  .entry {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .entry-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .name::after {
+    animation: none;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
