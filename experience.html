@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Experience · Didhiti Nahid</title>
   <meta name="description" content="Education, research and industrial experience of Didhiti Nahid, Computer Science and Engineering undergraduate at Islamic University of Technology.">
@@ -9,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hanken+Grotesk:wght@400..700&family=Young+Serif&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -18,7 +19,11 @@
   <header class="site-header band band--espresso">
     <nav class="container nav" aria-label="Main">
       <a href="index.html" class="nav-home">Didhiti Nahid</a>
-      <ul class="nav-links">
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>      <ul class="nav-links" id="nav-links">
         <li><a href="experience.html" aria-current="page">Experience</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="extracurricular.html">Extracurricular</a></li>
@@ -104,6 +109,8 @@
       <p>© 2026 Didhiti Nahid</p>
     </div>
   </footer>
+
+  <script src="nav.js"></script>
 
 </body>
 </html>

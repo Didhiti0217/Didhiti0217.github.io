@@ -163,6 +163,11 @@ img {
   text-decoration-color: currentColor;
 }
 
+/* Phone menu button: hidden on wider screens */
+.nav-toggle {
+  display: none;
+}
+
 /* CV: not attached yet, so the nav item shows a note instead of downloading */
 .nav-cv {
   position: relative;
@@ -639,7 +644,7 @@ img {
 /* ---------- Small screens ---------- */
 @media (max-width: 760px) {
   html {
-    scroll-padding-top: 7.5rem;
+    scroll-padding-top: 5rem;
   }
 
   .hero-grid {
@@ -668,10 +673,82 @@ img {
     font-size: 1.75rem;
   }
 
-  /* CV wraps to the start of the second nav row on phones */
+  /* CV wraps to the start of the second nav row on phones (no-JS fallback) */
   .nav-cv-note {
     right: auto;
     left: 0;
+  }
+
+  /* ---------- Phone menu (only when JS runs; otherwise links stay visible) ---------- */
+  .js .nav-toggle {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 5px;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1.5px solid rgb(236 224 209 / 0.35);
+    border-radius: 50%;
+    background: none;
+    color: var(--crema);
+    cursor: pointer;
+    transition: border-color 200ms var(--ease-out);
+  }
+
+  .js .nav-toggle:hover,
+  .js .nav-toggle:focus-visible {
+    border-color: var(--crema);
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 250ms var(--ease-out), opacity 200ms var(--ease-out);
+  }
+
+  /* Bars turn into an X when open */
+  .nav.is-open .nav-toggle-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav.is-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+  .nav.is-open .nav-toggle-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .js .nav-links {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.25rem 0 0.75rem;
+  }
+
+  .js .nav.is-open .nav-links {
+    display: flex;
+  }
+
+  .js .nav-links li {
+    border-top: 1px solid rgb(236 224 209 / 0.14);
+  }
+
+  .js .nav-links a,
+  .js .nav-cv-btn {
+    display: inline-block;
+    padding: 0.8rem 0;
+    font-size: 1.0625rem;
+  }
+
+  /* In the open menu, the CV note sits beside the label instead of floating */
+  .js .nav-cv-note {
+    position: static;
+    margin-left: 0.75rem;
+    padding: 0;
+    font-weight: 500;
+    color: var(--latte);
+    background: none;
+    border: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
   }
 
   .ledger-head {
